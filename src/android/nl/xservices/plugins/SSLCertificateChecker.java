@@ -35,9 +35,12 @@ public class SSLCertificateChecker extends CordovaPlugin {
               }
             }
             callbackContext.error("CONNECTION_NOT_SECURE");
+          } catch (IOException e) {
+            e.printStackTrace();
+            callbackContext.error("CONNECTION_FAILED");
           } catch (Exception e) {
+            e.printStackTrace();
             callbackContext.error("CONNECTION_NOT_SECURE");
-            //callbackContext.error("CONNECTION_FAILED. Details: " + e.getMessage());
           }
         }
       });
